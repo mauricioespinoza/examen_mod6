@@ -77,7 +77,9 @@ public class Registro extends Conexion{
     
     //Modificar persona seleccionada de listado
     public boolean modificaPersona(int codigo,String rut,String nombre,String apellido,String celular,String email, int sueldo, String estado, String departamento){
-        String q= "UPDATE examen_mod6.empleados SET nombre='"+nombre+"', apellido='"+apellido+"' , celular='"+celular+"' , email='"+email+"', sueldo_bruto='"+sueldo+"', est_civil='"+estado+"', nom_dpto='"+departamento+"' "
+        //Se modifica consulta de tal forma que siempre agregue un 20% al sueldo instanciado en vista
+        //(req. Consulta 4)
+        String q= "UPDATE examen_mod6.empleados SET nombre='"+nombre+"', apellido='"+apellido+"' , celular='"+celular+"' , email='"+email+"', sueldo_bruto='"+(sueldo+ (sueldo*0.2))+"', est_civil='"+estado+"', nom_dpto='"+departamento+"' "
                 + " WHERE codigo='"+codigo+"' and rut='"+rut+"' ";
         try {
             PreparedStatement pstm = this.getConexion().prepareStatement(q);
@@ -97,7 +99,7 @@ public class Registro extends Conexion{
         boolean res=false;
             //Se modifica consulta de tal forma que elimine registros seleccionados solo si sueldo bruto es igual a $120.000
             //este parametro se puede midifcar en formulario
-            
+            //(Req. Consulta 3)
             if (sueldo == 120000){
             String q = " DELETE FROM examen_mod6.empleados WHERE codigo=" + codigo + " and rut=" + rut + ";";
             try {

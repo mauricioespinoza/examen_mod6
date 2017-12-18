@@ -258,8 +258,9 @@ public class Controlador implements ActionListener,MouseListener {
                 
                 //Si todas las validaciones se cumplen, se modifica persona
                 else {
+                    //Se modifica mensaje a usuario indicandole que el sueldo ingresado ha sido aumentado un 20%
                    if (this.modelo.modificaPersona(Integer.parseInt(codigom),rutm,nombrem,apellidom,celularm,emailm,Integer.parseInt(sueldom),estadom,departamentom) == true){
-                        JOptionPane.showMessageDialog(null,"Se han modificado los datos de la persona en forma correcta");
+                        JOptionPane.showMessageDialog(null,"Se han modificado los datos de la persona en forma correcta. Recuerde que el sueldo ha sido aumentado un 20%");
                             //actualiza JTable
                         this.listProd.tbProducto.setModel(this.modelo.ListadoPersonas()); 
                             
