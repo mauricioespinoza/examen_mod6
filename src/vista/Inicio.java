@@ -33,7 +33,6 @@ public class Inicio extends javax.swing.JFrame {
         mnILista = new javax.swing.JMenuItem();
         mnPersonal = new javax.swing.JMenu();
         mnIBusca = new javax.swing.JMenuItem();
-        mnIElimina = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Farmacia La Esquina");
@@ -94,14 +93,6 @@ public class Inicio extends javax.swing.JFrame {
         });
         mnPersonal.add(mnIBusca);
 
-        mnIElimina.setText("Elimina Persona");
-        mnIElimina.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mnIEliminaActionPerformed(evt);
-            }
-        });
-        mnPersonal.add(mnIElimina);
-
         jMenuBar1.add(mnPersonal);
 
         setJMenuBar(jMenuBar1);
@@ -148,10 +139,6 @@ public class Inicio extends javax.swing.JFrame {
         txtCodBusca.setVisible(true);
         btnBuscar.setVisible(true);
     }//GEN-LAST:event_mnIBuscaActionPerformed
-
-    private void mnIEliminaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnIEliminaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_mnIEliminaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -202,7 +189,6 @@ public class Inicio extends javax.swing.JFrame {
     public javax.swing.JLabel lblBusca;
     public javax.swing.JLabel lblTituloPrinci;
     public javax.swing.JMenuItem mnIBusca;
-    public javax.swing.JMenuItem mnIElimina;
     public javax.swing.JMenuItem mnIIngresoP;
     public javax.swing.JMenuItem mnILista;
     public javax.swing.JMenu mnIngreso;

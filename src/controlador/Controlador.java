@@ -92,12 +92,20 @@ public class Controlador implements ActionListener,MouseListener {
         switch ( Accion.valueOf( e.getActionCommand() ) )
         {
             case mnIIngresoP:
+                this.vistaPrincipal.lblBusca.setVisible(false);
+                this.vistaPrincipal.jpnBusca.setVisible(false);
+                this.vistaPrincipal.txtCodBusca.setVisible(false);
+                this.vistaPrincipal.btnBuscar.setVisible(false);
                 this.ingProd.setLocationRelativeTo(null);
                 this.ingProd.setTitle("Ingresar Personas");
                 this.ingProd.setVisible(true);
                 this.vistaPrincipal.setVisible(false);
                 break;
             case mnILista:
+                this.vistaPrincipal.lblBusca.setVisible(false);
+                this.vistaPrincipal.jpnBusca.setVisible(false);
+                this.vistaPrincipal.txtCodBusca.setVisible(false);
+                this.vistaPrincipal.btnBuscar.setVisible(false);
                 this.listProd.setLocationRelativeTo(null);
                 this.listProd.setTitle("Lista de Personas en el Sistema");
                 this.listProd.setVisible(true);
@@ -155,13 +163,14 @@ public class Controlador implements ActionListener,MouseListener {
                 }
                 
                 //Se valida Sueldo
-                else if (sueldo.trim().equals("")||!sueldo.matches("^[0-9]*$")||Integer.parseInt(sueldo) < 12000||sueldo.trim().length() > 7){
+                else if (sueldo.trim().equals("")||!sueldo.matches("^[0-9]*$")||Integer.parseInt(sueldo) < 120000||sueldo.trim().length() > 7){
                     JOptionPane.showMessageDialog(null,"Debe ingresar sueldo definido en digitos, sin puntos y mayor a $120.000. Se permite sueldo de hasta 7 digitos");
                     this.ingProd.txtSueldo.setText(""); 
                 }
                 
                 //Se valida email
-                else if (email.trim().equals("")||!email.matches("^[_A-Za-z0-9-\\\\+]+(\\\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\\\.[A-Za-z0-9]+)*(\\\\.[A-Za-z]{2,})$")||email.trim().length() > 30){
+                else if (email.trim().equals("")||!email.matches("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+                        + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$")||email.trim().length() > 30){
                     JOptionPane.showMessageDialog(null,"Debe ingresar email sin espacios en blanco, con caracteres alfanumericos y con un largo menor a 30 caracteres");
                     this.ingProd.txtEmail.setText("");
                 }
@@ -224,25 +233,25 @@ public class Controlador implements ActionListener,MouseListener {
                 }
                 
                 //Se valida Sueldo
-                else if (sueldom.trim().equals("")||!sueldom.matches("^[0-9]*$")||Integer.parseInt(sueldom) < 12000||sueldom.trim().length() > 7){
+                else if (sueldom.trim().equals("")||!sueldom.matches("^[0-9]*$")||Integer.parseInt(sueldom) < 120000||sueldom.trim().length() > 7){
                     JOptionPane.showMessageDialog(null,"Debe ingresar sueldo definido en digitos, sin puntos y mayor a $120.000. Se permite sueldo de hasta 7 digitos");
                     this.listProd.txtsueldo.setText(""); 
                 }
                 
                 //Se valida email
-                else if (emailm.trim().equals("")||!emailm.matches("^[_A-Za-z0-9-\\\\+]+(\\\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\\\.[A-Za-z0-9]+)*(\\\\.[A-Za-z]{2,})$")||emailm.trim().length() > 30){
+                else if (emailm.trim().equals("")||!emailm.matches("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+                        + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$")||emailm.trim().length() > 30){
                     JOptionPane.showMessageDialog(null,"Debe ingresar email sin espacios en blanco, con caracteres alfanumericos y con un largo menor a 30 caracteres");
                     this.listProd.txtemail.setText("");
                 }
                 
                 //Si todas las validaciones se cumplen, se modifica persona
                 else {
-                    
                    if (this.modelo.modificaPersona(Integer.parseInt(codigom),rutm,nombrem,apellidom,celularm,emailm,Integer.parseInt(sueldom),estadom,departamentom) == true){
-                        JOptionPane.showMessageDialog(null,"Se han modificado los datos de la persona en forma correcta"); 
+                        JOptionPane.showMessageDialog(null,"Se han modificado los datos de la persona en forma correcta");
                             //actualiza JTable
                         this.listProd.tbProducto.setModel(this.modelo.ListadoPersonas()); 
-                            JOptionPane.showMessageDialog(null,"Producto actualizado");
+                            
                             //Limpiamos textField
                             this.listProd.txtcod.setText("");
                             this.listProd.txtRUT.setText("");
@@ -263,26 +272,34 @@ public class Controlador implements ActionListener,MouseListener {
                 
                 
             case btningvol:
+                this.vistaPrincipal.lblBusca.setVisible(false);
+                this.vistaPrincipal.jpnBusca.setVisible(false);
+                this.vistaPrincipal.txtCodBusca.setVisible(false);
+                this.vistaPrincipal.btnBuscar.setVisible(false);
                 this.vistaPrincipal.setLocationRelativeTo(null);
                 this.vistaPrincipal.setVisible(true);
                 this.ingProd.setVisible(false);
                 break;
             case btnlistvol:
+                this.vistaPrincipal.lblBusca.setVisible(false);
+                this.vistaPrincipal.jpnBusca.setVisible(false);
+                this.vistaPrincipal.txtCodBusca.setVisible(false);
+                this.vistaPrincipal.btnBuscar.setVisible(false);
                 this.vistaPrincipal.setLocationRelativeTo(null);
                 this.vistaPrincipal.setVisible(true);
                 this.listProd.setVisible(false);
                 break;
             case btnBuscar:
-                String moneda = this.vistaPrincipal.txtCodBusca.getText();
-                if (moneda.trim().equals("")||!moneda.matches("^[0-9]*$")||Integer.parseInt(moneda) == 0||moneda.length() < 3||moneda.length() >3){
+                String cod = this.vistaPrincipal.txtCodBusca.getText();
+                if (cod.trim().equals("")||Integer.parseInt(cod) <= 0||!cod.matches("^[0-9]*$")||Integer.parseInt(cod) > 100||cod.trim().length() > 3){
                     JOptionPane.showMessageDialog(null,"Ingrese un codigo de persona valido a buscar");
                 }
                 else {
                    this.vistaPrincipal.txtCodBusca.setText("");
                    this.listProd.setLocationRelativeTo(null);
-                   this.listProd.setTitle("Lista de Persona codigo: "+ moneda);
+                   this.listProd.setTitle("Lista de Persona codigo: "+ cod);
                    this.listProd.setVisible(true);
-                   this.listProd.tbProducto.setModel(this.modelo.BuscaPersona(Integer.parseInt(moneda)));
+                   this.listProd.tbProducto.setModel(this.modelo.BuscaPersona(Integer.parseInt(cod)));
                    break; 
                 }
             case btnElimina:
