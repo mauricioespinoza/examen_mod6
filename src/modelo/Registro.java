@@ -93,20 +93,31 @@ public class Registro extends Conexion{
     }
 
     //Elimina persona seleccionada de listado
-    public boolean eliminarPersona(int codigo, String rut){
+    public boolean eliminarPersona(int codigo, String rut, int sueldo){
         boolean res=false;
-        
-            String q = " DELETE FROM examen_mod6.empleados WHERE codigo=" + codigo + " and rut=" + rut + " " ;
+            //Se modifica consulta de tal forma que elimine registros seleccionados solo si sueldo bruto es igual a $120.000
+            //este parametro se puede midifcar en formulario
+            
+            if (sueldo == 120000){
+            String q = " DELETE FROM examen_mod6.empleados WHERE codigo=" + codigo + " and rut=" + rut + ";";
             try {
                 PreparedStatement pstm = this.getConexion().prepareStatement(q);
                 pstm.execute();
+           
+                int resp = pstm.executeUpdate();
                 pstm.close();
                 return true;
+                
+                
+               
             }catch(SQLException e){
                 System.err.println( e.getMessage() );
                 return false;
             }
-           
+            }
+            else{
+                return false;
+            }
     }
 
  

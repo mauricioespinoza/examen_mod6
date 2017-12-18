@@ -321,9 +321,30 @@ public class Controlador implements ActionListener,MouseListener {
                    break; 
                 }
             case btnElimina:
+                //Se condiciona el sueldo de la persona como un parametro para el metodo. Se puede modificar el sueldo y presionar
+                //btn eliminar, sin pasar por el metodo modificador
                 String codigoe = this.listProd.txtcod.getText();
                 String rute = this.listProd.txtRUT.getText();
-                if (this.modelo.eliminarPersona(Integer.parseInt(codigoe),rute) == true){
+                String sueld = this.listProd.txtsueldo.getText();
+                
+                if (Integer.parseInt(sueld) > 120000||Integer.parseInt(sueld) < 120000){
+                    JOptionPane.showMessageDialog(null,"No fue posible eliminar la persona de BD"
+                            + " (Recuerde que solo se eliminara usuario si su sueldo es de $120.000). Revise log en consola");
+                    //Limpiamos textField
+                     this.listProd.txtcod.setText("");
+                     this.listProd.txtRUT.setText("");
+                     this.listProd.txtnombre.setText(""); 
+                     this.listProd.txtapellido.setText("");
+                     this.listProd.txtcelular.setText("");
+                     this.listProd.txtemail.setText("");
+                     this.listProd.txtsueldo.setText("");
+                     this.listProd.cboestado.setSelectedItem("");
+                     this.listProd.cboDepa.setSelectedItem("");
+                     //Actualizamos la vista del listado
+                     this.listProd.tbProducto.setModel(this.modelo.ListadoPersonas());
+                }
+                else {
+                if (this.modelo.eliminarPersona(Integer.parseInt(codigoe),rute, Integer.parseInt(sueld)) == true){
                     JOptionPane.showMessageDialog(null,"Se ha eliminado a la persona seleccionada");
                     //Limpiamos textField
                      this.listProd.txtcod.setText("");
@@ -341,6 +362,7 @@ public class Controlador implements ActionListener,MouseListener {
                 }
                 else {
                     JOptionPane.showMessageDialog(null,"No fue posible eliminar la persona de BD. Revise log en consola");
+                }
                 }
                 
                 //Se agrega comportamiento de botón Limpiar - Req: consulta 1
