@@ -36,7 +36,8 @@ public class Controlador implements ActionListener,MouseListener {
         btnGuardar,//->se ejecuta cuando se hace clic en boton guardar en vista Ingresar Persona
         btnmodificar, //-> Ejecuta cuando se hace clic en boton modificar en vista Listar Personas
         btningvol, //boton volver a pantalla principal en Ingreso de persona
-        btnlistvol //boton volver a pantalla principal en Lista personas
+        btnlistvol, //boton volver a pantalla principal en Lista personas
+        btnLimpiar //Boton para limpiar formulario de personas (requerimiento consulta 1)
     }
     
     /** Constructor de clase */
@@ -86,6 +87,10 @@ public class Controlador implements ActionListener,MouseListener {
         this.listProd.tbProducto.addMouseListener(this);
         this.listProd.btnmodificar.setActionCommand("btnmodificar");
         this.listProd.btnmodificar.addActionListener(this);
+        
+        //Limpia formulario de ingreso de persona
+        this.ingProd.btnLimpiar.setActionCommand("btnLimpiar");
+        this.ingProd.btnLimpiar.addActionListener(this);
     }
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -324,6 +329,20 @@ public class Controlador implements ActionListener,MouseListener {
                 else {
                     JOptionPane.showMessageDialog(null,"No fue posible eliminar la persona de BD. Revise log en consola");
                 }
+                
+                //Se agrega comportamiento de botón Limpiar - Req: consulta 1
+            case btnLimpiar:
+                this.ingProd.txtCodigo.setText("");
+                this.ingProd.txtRut.setText("");
+                this.ingProd.txtNombre.setText(""); 
+                this.ingProd.txtApellido.setText("");
+                this.ingProd.txtCelular.setText("");
+                this.ingProd.txtEmail.setText("");
+                this.ingProd.txtSueldo.setText("");
+                this.ingProd.cboEstado.setSelectedItem("");
+                this.ingProd.cboDepa.setSelectedItem("");
+                //Se coloca cursor en el primer campo del formulario de ingreso de personas
+                this.ingProd.txtCodigo.requestFocus();
                 
         }
     }

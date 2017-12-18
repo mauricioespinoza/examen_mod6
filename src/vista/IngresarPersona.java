@@ -40,6 +40,7 @@ public class IngresarPersona extends javax.swing.JFrame {
         lblRut = new javax.swing.JLabel();
         cboEstado = new javax.swing.JComboBox<>();
         cboDepa = new javax.swing.JComboBox<>();
+        btnLimpiar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Farmacia La Esquina");
@@ -82,9 +83,11 @@ public class IngresarPersona extends javax.swing.JFrame {
 
         lblRut.setText("RUT");
 
-        cboEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "C", "S", "V" }));
+        cboEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "C", "S", "V", "" }));
 
-        cboDepa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Informatica", "Redes", "Administracion", "Finanzas", "Bienestar" }));
+        cboDepa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Informatica", "Redes", "Administracion", "Finanzas", "Bienestar", "" }));
+
+        btnLimpiar.setText("Limpiar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -96,19 +99,21 @@ public class IngresarPersona extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(3, 3, 3)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(lblSueldo)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblEmail)
+                                    .addComponent(lblNombre)
+                                    .addComponent(lblRut)
+                                    .addComponent(lblCodigo)
+                                    .addComponent(lblCelular)
+                                    .addComponent(lblApellido))
+                                .addComponent(lblEstado)
+                                .addComponent(lblDepartamento))
+                            .addComponent(btningvol))
+                        .addGap(24, 24, 24)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lblSueldo)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(lblEmail)
-                                        .addComponent(lblNombre)
-                                        .addComponent(lblRut)
-                                        .addComponent(lblCodigo)
-                                        .addComponent(lblCelular)
-                                        .addComponent(lblApellido))
-                                    .addComponent(lblEstado)
-                                    .addComponent(lblDepartamento))
-                                .addGap(24, 24, 24)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblTitulo)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -123,7 +128,7 @@ public class IngresarPersona extends javax.swing.JFrame {
                                     .addComponent(cboDepa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(0, 83, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(btningvol)
+                                .addComponent(btnLimpiar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(btnGuardar)
                                 .addGap(49, 49, 49))))
@@ -177,7 +182,8 @@ public class IngresarPersona extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btningvol)
-                    .addComponent(btnGuardar))
+                    .addComponent(btnGuardar)
+                    .addComponent(btnLimpiar))
                 .addGap(45, 45, 45))
         );
 
@@ -232,6 +238,7 @@ public class IngresarPersona extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnGuardar;
+    public javax.swing.JButton btnLimpiar;
     public javax.swing.JButton btningvol;
     public javax.swing.JComboBox<String> cboDepa;
     public javax.swing.JComboBox<String> cboEstado;
