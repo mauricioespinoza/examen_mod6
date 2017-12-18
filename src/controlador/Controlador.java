@@ -101,6 +101,9 @@ public class Controlador implements ActionListener,MouseListener {
                 this.vistaPrincipal.jpnBusca.setVisible(false);
                 this.vistaPrincipal.txtCodBusca.setVisible(false);
                 this.vistaPrincipal.btnBuscar.setVisible(false);
+                this.vistaPrincipal.lblcodigo.setVisible(false);
+                this.vistaPrincipal.cboDepa.setVisible(false);
+                this.vistaPrincipal.lblDepartamento.setVisible(false);
                 this.ingProd.setLocationRelativeTo(null);
                 this.ingProd.setTitle("Ingresar Personas");
                 this.ingProd.setVisible(true);
@@ -111,6 +114,9 @@ public class Controlador implements ActionListener,MouseListener {
                 this.vistaPrincipal.jpnBusca.setVisible(false);
                 this.vistaPrincipal.txtCodBusca.setVisible(false);
                 this.vistaPrincipal.btnBuscar.setVisible(false);
+                this.vistaPrincipal.lblcodigo.setVisible(false);
+                this.vistaPrincipal.cboDepa.setVisible(false);
+                this.vistaPrincipal.lblDepartamento.setVisible(false);
                 this.listProd.setLocationRelativeTo(null);
                 this.listProd.setTitle("Lista de Personas en el Sistema");
                 this.listProd.setVisible(true);
@@ -281,6 +287,9 @@ public class Controlador implements ActionListener,MouseListener {
                 this.vistaPrincipal.jpnBusca.setVisible(false);
                 this.vistaPrincipal.txtCodBusca.setVisible(false);
                 this.vistaPrincipal.btnBuscar.setVisible(false);
+                this.vistaPrincipal.lblcodigo.setVisible(false);
+                this.vistaPrincipal.cboDepa.setVisible(false);
+                this.vistaPrincipal.lblDepartamento.setVisible(false);
                 this.vistaPrincipal.setLocationRelativeTo(null);
                 this.vistaPrincipal.setVisible(true);
                 this.ingProd.setVisible(false);
@@ -290,12 +299,16 @@ public class Controlador implements ActionListener,MouseListener {
                 this.vistaPrincipal.jpnBusca.setVisible(false);
                 this.vistaPrincipal.txtCodBusca.setVisible(false);
                 this.vistaPrincipal.btnBuscar.setVisible(false);
+                this.vistaPrincipal.lblcodigo.setVisible(false);
+                this.vistaPrincipal.cboDepa.setVisible(false);
+                this.vistaPrincipal.lblDepartamento.setVisible(false);
                 this.vistaPrincipal.setLocationRelativeTo(null);
                 this.vistaPrincipal.setVisible(true);
                 this.listProd.setVisible(false);
                 break;
             case btnBuscar:
                 String cod = this.vistaPrincipal.txtCodBusca.getText();
+                String depa = this.vistaPrincipal.cboDepa.getSelectedItem().toString();
                 if (cod.trim().equals("")||Integer.parseInt(cod) <= 0||!cod.matches("^[0-9]*$")||Integer.parseInt(cod) > 100||cod.trim().length() > 3){
                     JOptionPane.showMessageDialog(null,"Ingrese un codigo de persona valido a buscar");
                 }
@@ -304,7 +317,7 @@ public class Controlador implements ActionListener,MouseListener {
                    this.listProd.setLocationRelativeTo(null);
                    this.listProd.setTitle("Lista de Persona codigo: "+ cod);
                    this.listProd.setVisible(true);
-                   this.listProd.tbProducto.setModel(this.modelo.BuscaPersona(Integer.parseInt(cod)));
+                   this.listProd.tbProducto.setModel(this.modelo.BuscaPersona(Integer.parseInt(cod), depa));
                    break; 
                 }
             case btnElimina:

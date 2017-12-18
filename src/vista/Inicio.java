@@ -11,6 +11,9 @@ public class Inicio extends javax.swing.JFrame {
         jpnBusca.setVisible(false);
         txtCodBusca.setVisible(false);
         btnBuscar.setVisible(false);
+        lblcodigo.setVisible(false);
+        cboDepa.setVisible(false);
+        lblDepartamento.setVisible(false);
     }
     
     /**
@@ -26,6 +29,9 @@ public class Inicio extends javax.swing.JFrame {
         jpnBusca = new javax.swing.JPanel();
         txtCodBusca = new javax.swing.JTextField();
         btnBuscar = new javax.swing.JButton();
+        lblDepartamento = new javax.swing.JLabel();
+        cboDepa = new javax.swing.JComboBox<>();
+        lblcodigo = new javax.swing.JLabel();
         lblBusca = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         mnIngreso = new javax.swing.JMenu();
@@ -44,16 +50,31 @@ public class Inicio extends javax.swing.JFrame {
 
         btnBuscar.setText("Buscar");
 
+        lblDepartamento.setText("Departamento");
+
+        cboDepa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Informatica", "Redes", "Administracion", "Finanzas", "Bienestar" }));
+
+        lblcodigo.setText("Código");
+
         javax.swing.GroupLayout jpnBuscaLayout = new javax.swing.GroupLayout(jpnBusca);
         jpnBusca.setLayout(jpnBuscaLayout);
         jpnBuscaLayout.setHorizontalGroup(
             jpnBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpnBuscaLayout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(txtCodBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnBuscar)
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(jpnBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblDepartamento)
+                    .addComponent(lblcodigo))
+                .addGap(24, 24, 24)
+                .addGroup(jpnBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpnBuscaLayout.createSequentialGroup()
+                        .addComponent(txtCodBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                        .addComponent(btnBuscar))
+                    .addGroup(jpnBuscaLayout.createSequentialGroup()
+                        .addComponent(cboDepa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jpnBuscaLayout.setVerticalGroup(
             jpnBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -61,12 +82,17 @@ public class Inicio extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jpnBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtCodBusca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBuscar))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnBuscar)
+                    .addComponent(lblcodigo))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jpnBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblDepartamento)
+                    .addComponent(cboDepa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         lblBusca.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        lblBusca.setText("Buscar producto por código");
+        lblBusca.setText("Buscar persona");
 
         mnIngreso.setText("Ingreso Personal");
 
@@ -123,7 +149,7 @@ public class Inicio extends javax.swing.JFrame {
                 .addComponent(lblBusca)
                 .addGap(18, 18, 18)
                 .addComponent(jpnBusca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         pack();
@@ -138,6 +164,9 @@ public class Inicio extends javax.swing.JFrame {
         jpnBusca.setVisible(true);
         txtCodBusca.setVisible(true);
         btnBuscar.setVisible(true);
+        lblcodigo.setVisible(true);
+        cboDepa.setVisible(true);
+        lblDepartamento.setVisible(true);
     }//GEN-LAST:event_mnIBuscaActionPerformed
 
     /**
@@ -184,10 +213,13 @@ public class Inicio extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnBuscar;
+    public javax.swing.JComboBox<String> cboDepa;
     private javax.swing.JMenuBar jMenuBar1;
     public javax.swing.JPanel jpnBusca;
     public javax.swing.JLabel lblBusca;
+    public javax.swing.JLabel lblDepartamento;
     public javax.swing.JLabel lblTituloPrinci;
+    public javax.swing.JLabel lblcodigo;
     public javax.swing.JMenuItem mnIBusca;
     public javax.swing.JMenuItem mnIIngresoP;
     public javax.swing.JMenuItem mnILista;

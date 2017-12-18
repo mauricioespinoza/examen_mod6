@@ -111,23 +111,27 @@ public class Registro extends Conexion{
 
  
     //Busca persona
-    public DefaultTableModel BuscaPersona(int codigo){
+    public DefaultTableModel BuscaPersona(int codigo, String departamento){
       DefaultTableModel tablemodel = new DefaultTableModel();
       int registros = 0;
       String[] columNames = {"Codigo Pers.","RUT","Nombre","Apellido","Celular","Email","Sueldo Bruto","Est. Civil", "Departamento"};
       try{
-         PreparedStatement pstm = this.getConexion().prepareStatement("SELECT count(*) as total FROM empleados where codigo ="+ codigo + ";" );
+         PreparedStatement pstm = this.getConexion().prepareStatement("SELECT count(*) as total FROM empleados where codigo ="+codigo+ " and nom_dpto ='"+ departamento + "';" );
          ResultSet res = pstm.executeQuery();
          res.next();
          registros = res.getInt("total");
          res.close();
+         if (registros == 0){
+             JOptionPane.showMessageDialog(null,"El codigo y departamento a buscar no existe en BD");
+         }
       }catch(SQLException e){
+         
          System.err.println( e.getMessage() );
       }
       Object[][] data = new String[registros][9];
       try{
          if (verificarCodigo(codigo) == true){
-             PreparedStatement pstm = this.getConexion().prepareStatement("SELECT * FROM empleados where codigo ="+ codigo + ";" );
+             PreparedStatement pstm = this.getConexion().prepareStatement("SELECT * FROM empleados where codigo ="+ codigo +" and nom_dpto ='"+ departamento +"';" );
              ResultSet res = pstm.executeQuery();
              int i=0;
              while(res.next()){
@@ -146,7 +150,7 @@ public class Registro extends Conexion{
              tablemodel.setDataVector(data, columNames );
          }
          else{
-            JOptionPane.showMessageDialog(null,"El codigo a buscar no existe en BD");
+            JOptionPane.showMessageDialog(null,"El codigo y departamento a buscar no existe en BD");
             }
       }catch(SQLException e){
             System.err.println( e.getMessage() );
